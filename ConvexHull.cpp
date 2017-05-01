@@ -139,17 +139,6 @@ void sort(vector<Point> &set, int l, int r)
         sort(set, index+1, r);
     }
 }
-////get the boundary of hull
-//void getHullBoundary(vector<Point> &set, vector<Point> &res)
-//{
-//    for(int i = 0;i<set.size();++i)
-//    {
-//        if(set[i].status)
-//        {
-//            res.push_back(set[i]);
-//        }
-//    }
-//}
 
 //show the boundary of hull
 void showHullBoundary(vector<Point> &set)
@@ -345,7 +334,7 @@ void expFlow(vector<ExpResult> &res, int (&pointNumber)[EXPTIME], int n)
         {
             if(res[i*3+j].valid){
                 cout<<setiosflags(ios::fixed)<<setprecision(2);
-                cout<<res[i*3+j].methodName<<": runtime is "<<res[i].runtime<<" ms"<<endl;
+                cout<<res[i*3+j].methodName<<": runtime is "<<res[i*3+j].runtime<<" ms"<<endl;
             } else{
                 string excep = res[i*3+j].methodName+" ERROR!";
                 throw excep;
@@ -358,7 +347,7 @@ void expFlow(vector<ExpResult> &res, int (&pointNumber)[EXPTIME], int n)
 int main()
 {
     int n = EXPTIME;
-    int pointNumber[EXPTIME] = {10, 20, 30, 50, 80};
+    int pointNumber[EXPTIME] = {1000, 2000, 3000, 5000, 8000};
     vector<ExpResult> res;
     try{
         expFlow(res, pointNumber, n);

@@ -288,7 +288,7 @@ VectorXd calculateSubsetWeight(vector<Point> &sampleSet, vector<vector<int>> &su
         {
             weight += sampleSet[subsets[i][j]].pointWeight;
         }
-        weight /= subsets[i].size();
+//        weight /= subsets[i].size();
         weights(i) = weight;
     }
     return weights;
@@ -368,7 +368,7 @@ void linearProgrammingSetCover(vector<Point> &sampleSet, vector<vector<int>> &su
                 {
                     if(find(subsets[j].begin(), subsets[j].end(), sampleSet[i].pointId) != subsets[j].end())
                     {
-                        if(weights(j) < minWeight)
+                        if(weights(j) - sampleSet[i].pointWeight < minWeight)
                         {
                             minWeight = weights(j);
                             whichSubset = j;
